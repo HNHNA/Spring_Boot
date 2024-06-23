@@ -20,9 +20,8 @@
             <th>ID</th>
             <th>Name</th>
             <th>Price</th>
-            <th>Image</th>
+            <th>Description</th>
             <th>Category Name</th>
-            <th>Hide</th>
             <th>Actions</th>
             <th>Add To Cart</th>
         </tr>
@@ -32,23 +31,20 @@
             <td th:text="${product.id}"></td>
             <td th:text="${product.name}"></td>
             <td th:text="${product.price}"></td>
-            <td th:if="${product.img1 != null}">
-                <img th:src="@{/images/{img}(img=${product.img1})}"
-                     alt="${product.name}" width="50" height="50">
-            </td>
-            <td th:if="${product.img1 == null}">No Image</td>
+            <td th:text="${product.detail}"></td>
             <td th:text="${product.category.name}"></td>
-            <td th:text="${product.hide}"></td>
             <td>
                 <a th:href="@{/products/edit/{id}(id=${product.id})}" class="btn
 btn-success btn-sm">Edit</a>
                 <a th:href="@{/products/delete/{id}(id=${product.id})}" class="btn
-btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+btn-danger btn-sm"
+                   onclick="return confirm('Are you sure?')">Delete</a>
             </td>
             <td>
                 <form th:action="@{/cart/add}" method="post">
                     <input type="number" name="quantity" min="1" value="1"
-                           class="form-control d-inline-block" style="width: 70px;">
+                           class="form-control d-inline-block"
+                           style="width: 70px;">
                     <input type="hidden" th:value="${product.id}"
                            name="productId"/>
                     <button type="submit" class="btn btn-warning btn-sm">Add to
