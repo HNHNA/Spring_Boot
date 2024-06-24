@@ -25,6 +25,7 @@ import java.util.Set;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_users")
     private Long id;
 
     @NotBlank(message = "Username is required")
